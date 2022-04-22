@@ -34,27 +34,28 @@ def calc_covariance(values1, values2):
 
 def population_statistics(feature_description, data, treatment, target, threshold, is_above,
 statistic_functions):
+    k = 0
     i = 0
-    if (is_above):
+    print(feature_description)
+    print(target, end=":")
+    if is_above :
         while i < len(data[treatment]):
-            if data[treatment][i] < threshold:
+            if data[treatment][i] <= threshold:
                 for key in data:
                     data[key].pop(i)
-        i=+1
+            i = i+1
     else:
         while i < len(data[treatment]):
             if data[treatment][i] > threshold:
                 for key in data:
                     data[key].pop(i)
-        i=+1
-    for j in range(len( statistic_functions)):
+            i = i+1
+
+    for j in range(len(statistic_functions)):
         result=statistic_functions[j](data[target])
-        while result< 10 **k:
-            k = k + 1
         formatf = round(result, 2)
-        if (i == 0):
+        if (k==0):
             print(formatf, end=", ")
+            k=k+1
         else:
             print(formatf)
-
-

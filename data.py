@@ -6,7 +6,6 @@ from statistics import population_statistics
 
 def load_data(path, features):
 
-    print(1)
     df = pd.read_csv(path)
     newdf = (df[features])
     data = newdf.to_dict(orient="list")
@@ -33,14 +32,12 @@ def filter_by_feature(data, feature, values):
     return data1, data2
 
 def print_details(data, features, statistic_functions):
-    j=0
+
     for key in data:
         if(key in features):
             print(key,end=":")
             for i in range(len(statistic_functions)):
                 avg=statistic_functions[i](data[key])
-                while avg < 10**j:
-                    j = j + 1
                 formatf= round(avg,2)
                 if (i==0):
                     print(formatf,end=", ")
