@@ -33,20 +33,23 @@ def filter_by_feature(data, feature, values):
     return data1, data2
 
 def print_details(data, features, statistic_functions):
+    j=0
     for key in data:
         if(key in features):
             print(key,end=":")
             for i in range(len(statistic_functions)):
-                x=statistic_functions[i](data[key])
-            format_float= "{:.2}".format(x)
-            if i==0:
-                print(format_float,end=", ")
-            else:
-                print(format_float)
+                avg=statistic_functions[i](data[key])
+                while avg < 10**j:
+                    j = j + 1
+                formatf= round(avg,2)
+                if (i==0):
+                    print(formatf,end=", ")
+                else:
+                    print(formatf)
 
 
 def print_joint_details(data, features, statistic_functions, statistic_functions_names):
     for i in range(len(statistic_functions)):
          cov = statistic_functions[i](data[features[1]],data[features[0]])
-    format_float = "{:.2}".format(cov)
+    format_float = round(cov,2)
     print(statistic_functions_names, format_float)

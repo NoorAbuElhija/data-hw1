@@ -5,10 +5,10 @@ def calc_mean(values):
 
     i = 0
     sums=0
-    while i < len(values):
-        sums=sums+values[i]
-        i=i+1
-    avg=sums/i
+    for i in values:
+        sums=sums+i
+    n=len(values)
+    avg=sums/ n
     return avg
 
 def calc_stdv(values):
@@ -17,7 +17,7 @@ def calc_stdv(values):
     n = len(values)
     sum=0
     for i in range(n):
-        sum=sum+((values[i]-avg)*(values[i]-avg))
+        sum=sum+(values[i]-avg)*(values[i]-avg)
 
     stdv = sqrt((1/(n-1))*sum)
     return stdv
@@ -47,13 +47,14 @@ statistic_functions):
                 for key in data:
                     data[key].pop(i)
         i=+1
+    for j in range(len( statistic_functions)):
+        result=statistic_functions[j](data[target])
+        while result< 10 **k:
+            k = k + 1
+        formatf = round(result, 2)
+        if (i == 0):
+            print(formatf, end=", ")
+        else:
+            print(formatf)
 
-    if(calc_mean() in statistic_functions) :
-       mean = calc_mean(data[target])
-       print(mean)
-    if(calc_stdv() in statistic_functions):
-       stdv = calc_stdv(data[target])
-       print(stdv)
-    if(calc_covariance() in statistic_functions):
-       cov = calc_covariance(data[target])
-       print(cov)
+

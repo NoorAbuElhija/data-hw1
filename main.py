@@ -28,17 +28,17 @@ def main(argv):
    statistic_functions=[calc_mean, calc_stdv]
    data1, data2 = filter_by_feature(data, 'season', values)
    data3, data4 = filter_by_feature(data, 'is_holiday', values)
-   features = ['hum', 't1', 'cnt']
+   features1 = ['hum', 't1', 'cnt']
    features2 = ['t1', 'cnt']
    print("summer:")
    statistic_functions2=[calc_covariance]
-   print_details(data1, features, statistic_functions)
+   print_details(data1, features1, statistic_functions)
    print_joint_details(data3, features2, statistic_functions2, 'Cov(t1, cnt)')
    print("holiday:")
-   print_details(data3, features, statistic_functions)
+   print_details(data3, features1, statistic_functions)
    print_joint_details(data1, features2, statistic_functions2, 'Cov(t1, cnt)')
    print("All:")
-   print_details(data, features, statistic_functions)
+   print_details(data, features1, statistic_functions)
    print_joint_details(data, features2, statistic_functions2, 'Cov(t1, cnt)')
 
 
