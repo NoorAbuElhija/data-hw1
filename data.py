@@ -1,8 +1,4 @@
 import pandas as pd
-from statistics import calc_mean
-from statistics import calc_stdv
-from statistics import calc_covariance
-from statistics import population_statistics
 
 def load_data(path, features):
 
@@ -14,8 +10,8 @@ def load_data(path, features):
 
 def filter_by_feature(data, feature, values):
 
-    data2 = {k:v.copy() for k,v in data.items()}
-    data1 = {k:v.copy() for k,v in data.items()}
+    data2 = {k: v.copy() for k,v in data.items()}
+    data1 = {k: v.copy() for k,v in data.items()}
     i = 0
     j = 0
     l = 0
@@ -35,7 +31,7 @@ def print_details(data, features, statistic_functions):
 
     for key in data:
         if(key in features):
-            print(key,end=":")
+            print(key,end=": ")
             for i in range(len(statistic_functions)):
                 avg=statistic_functions[i](data[key])
                 formatf= round(avg,2)

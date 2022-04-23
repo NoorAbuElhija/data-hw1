@@ -36,23 +36,21 @@ def population_statistics(feature_description, data, treatment, target, threshol
 statistic_functions):
     k = 0
     i = 0
+    data1=[]
     print(feature_description)
-    print(target, end=":")
+    print(target, end=": ")
     if is_above :
         while i < len(data[treatment]):
-            if data[treatment][i] <= threshold:
-                for key in data:
-                    data[key].pop(i)
+            if data[treatment][i] > threshold:
+                data1.append(data[target][i])
             i = i+1
     else:
         while i < len(data[treatment]):
-            if data[treatment][i] > threshold:
-                for key in data:
-                    data[key].pop(i)
+            if data[treatment][i] <= threshold:
+                data1.append(data[target][i])
             i = i+1
-
     for j in range(len(statistic_functions)):
-        result=statistic_functions[j](data[target])
+        result=statistic_functions[j](data1)
         formatf = round(result, 2)
         if (k==0):
             print(formatf, end=", ")
