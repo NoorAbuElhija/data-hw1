@@ -19,7 +19,8 @@ def main(argv):
             Keyword arguments:
             argv -- list that contains paths and features
             """
-    data = load_data(argv[1], argv[2])
+    list1 = argv[2].split(", ")
+    data = load_data(argv[1], list1)
     values = {1}
     statistic_functions = [calc_mean, calc_stdv]
     data1, data2 = filter_by_feature(data, 'season', values)

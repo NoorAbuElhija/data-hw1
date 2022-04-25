@@ -40,6 +40,7 @@ def filter_by_feature(data, feature, values):
                 data1[key].pop(i - k)
             k = k + 1
         i = i + 1
+        # return two data dictionary
     return data1, data2
 
 

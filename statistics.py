@@ -12,6 +12,7 @@ def calc_mean(values):
         sums = sums + i
     n = len(values)
     avg = sums / n
+    # return the average
     return avg
 
 
@@ -28,6 +29,7 @@ def calc_stdv(values):
         sums = sums + (values[i] - avg) * (values[i] - avg)
 
     stdv = sqrt((1 / (n - 1)) * sums)
+    # return the std
     return stdv
 
 
@@ -45,6 +47,7 @@ def calc_covariance(values1, values2):
     for i in range(n):
         sum1 = sum1 + ((values1[i] - avg1) * (values2[i] - avg2))
     cov = 1 / (n - 1) * sum1
+    # return the covariance
     return cov
 
 
@@ -69,7 +72,7 @@ def population_statistics(feature_description, data, treatment, target, threshol
     if is_above:
         while i < len(data[treatment]):
             if data[treatment][i] > threshold:
-                #add the appropriate target value to data
+                # add the appropriate target value to data
                 data1.append(data[target][i])
             i = i + 1
     else:
